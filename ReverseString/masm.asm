@@ -18,10 +18,10 @@ mov stdHandle, eax
 
 invoke ReadConsole,stdHandle, ADDR input, inputsize, ADDR byteRead, 0 ;??c d? li?u t? c?a s? console 
 
-mov ecx, byteRead ;  g·n gi· tr? ecx cho s? l??ng k˝ t? ??c ???c
+mov ecx, byteRead ;  g√°n gi√° tr? ecx cho s? l??ng k√Ω t? ??c ???c
 mov esi, 0
 
-;??a input v‡o stack 
+;??a input v√†o stack 
 l1:
     movzx eax,input[esi]
     push eax
@@ -31,7 +31,7 @@ l1:
 mov ecx, byteRead
 mov esi,0
 
-;l?y ng??c eax t? stack ra v‡ l?u l?i v‡o input
+;l?y ng??c eax t? stack ra v√† l?u l?i v√†o input
 l2:
    pop eax
    mov input[esi], al
