@@ -16,12 +16,12 @@ call WriteString
 invoke GetStdHandle, STD_INPUT_HANDLE
 mov stdHandle, eax
 
-invoke ReadConsole,stdHandle, ADDR input, inputsize, ADDR byteRead, 0 ;??c d? li?u t? c?a s? console 
+invoke ReadConsole,stdHandle, ADDR input, inputsize, ADDR byteRead, 0 ;Doc du lieu tu cua so console
 
-mov ecx, byteRead ;  gán giá tr? ecx cho s? l??ng ký t? ??c ???c
+mov ecx, byteRead ;  gan luong ki tu doc duoc cho ecx
 mov esi, 0
 
-;??a input vào stack 
+;Day input vao stack 
 l1:
     movzx eax,input[esi]
     push eax
@@ -31,7 +31,7 @@ l1:
 mov ecx, byteRead
 mov esi,0
 
-;l?y ng??c eax t? stack ra và l?u l?i vào input
+;lay eax ra khoi stack roi gan lai cho input
 l2:
    pop eax
    mov input[esi], al
