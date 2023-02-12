@@ -10,8 +10,10 @@ inputsize=32
 .code
 main proc
 
-mov edx, OFFSET msg
-call WriteString
+invoke GetStdHandle, STD_OUTPUT_HANDLE
+mov stdHandle, eax
+mov edx, offset msg
+invoke WriteConsole, stdHandle,edx, sizeof msg, byteRead,0
 
 invoke GetStdHandle, STD_INPUT_HANDLE
 mov stdHandle, eax
