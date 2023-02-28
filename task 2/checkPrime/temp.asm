@@ -13,7 +13,7 @@ result db 32 dup(?),0
 number dd 32 dup(?),0
 .code
 
-itoa PROC
+itoa PROC; chia so nguyen cho 10 (dat trong edi), roi lay phan du (luu tron edx) + 30h de chuyen int sang ascii
 push ebp
 mov ebp,esp
 mov esi,[ebp+8] 
