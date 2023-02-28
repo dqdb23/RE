@@ -103,7 +103,7 @@ mov esi, offset arrayRS
 sub edx, 8
 xor eax, eax
 
-checkprime:
+checkprime:;kiem tra so nguyen to
    add edx, 8
    cmp DWORD ptr [edx], 0h
    je print
@@ -129,16 +129,16 @@ is_prime:
 	add esi, 8
 	jmp checkprime
 
-atoi:
+atoi:; ascii to int
 	mov eax,0 
 atoi_start:
 	 movzx esi, BYTE PTR [edi]
-	 cmp esi, 0Ah          ; Check for \n
-     je done
-	 cmp esi, 0dh          ; Check for \n
-     je done
-	 test esi, esi           ; Check for end of string 
-     je done
+	 cmp esi, 0Ah         
+         je done
+	 cmp esi, 0dh          
+         je done
+	 test esi, esi           ; Kiem tra string ket thuc chua
+         je done
 	 sub esi,48
 	 imul eax,10d
 	 add eax,esi
