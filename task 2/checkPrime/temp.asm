@@ -139,9 +139,9 @@ atoi_start:
          je done
 	 test esi, esi           ; Kiem tra string ket thuc chua
          je done
-	 sub esi,48
-	 imul eax,10d
-	 add eax,esi
+	 sub esi,48              ; tru esi cho 48 de chuyen ascii thanh int 
+	 imul eax,10d            ; nhan eax len 10 
+	 add eax,esi             ; roi cong eax voi esi chay den khi nao string ket thuc.
 	 inc edi
 	 jmp atoi_start
 done:
