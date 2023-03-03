@@ -13,7 +13,7 @@ result db 32 dup(?),0
 number dd 32 dup(?),0
 .code
 
-itoa PROC; chia so nguyen cho 10 (dat trong edi), roi lay phan du (luu tron edx) + 30h de chuyen int sang ascii
+itoa PROC
 push ebp
 mov ebp,esp
 mov esi,[ebp+8] 
@@ -103,45 +103,49 @@ mov esi, offset arrayRS
 sub edx, 8
 xor eax, eax
 
-checkprime:;kiem tra so nguyen to
+checkprime:
    add edx, 8
    cmp DWORD ptr [edx], 0h
    je print
    cmp DWORD ptr [edx], 2
-   jle checkprime
-   mov ebx, 1
+   jl checkprime
+   
+   mov ebx, 2
    l1:
-     inc ebx
-	 mov eax, DWORD ptr [edx]
+     mov eax, DWORD ptr [edx]
 	 mov ecx, DWORD ptr [edx]
+	 cmp eax, 2
+	 je l3
 	 div bl
 	 cmp ah, 0
-	 je is_prime
+	 je is_notprime
 	 mov eax, ecx
+	 inc ebx
 	 cmp ebx, eax
 	 jne l1 
+	 l3:
+	 mov eax, ecx
+     mov DWORD ptr [esi], eax
+	 add esi, 8
 	 je checkprime
 
 
-is_prime:
-    mov eax, ecx
-    mov DWORD ptr [esi], eax
-	add esi, 8
-	jmp checkprime
-
-atoi:; ascii to int
+is_notprime:
+    jmp checkprime
+    
+atoi:
 	mov eax,0 
 atoi_start:
 	 movzx esi, BYTE PTR [edi]
-	 cmp esi, 0Ah         
-         je done
-	 cmp esi, 0dh          
-         je done
-	 test esi, esi           ; Kiem tra string ket thuc chua
-         je done
-	 sub esi,48              ; tru esi cho 48 de chuyen ascii thanh int 
-	 imul eax,10d            ; nhan eax len 10 
-	 add eax,esi             ; roi cong eax voi esi chay den khi nao string ket thuc.
+	 cmp esi, 0Ah          ; Check for \n
+     je done
+	 cmp esi, 0dh          ; Check for \n
+     je done
+	 test esi, esi           ; Check for end of string 
+     je done
+	 sub esi,48
+	 imul eax,10d
+	 add eax,esi
 	 inc edi
 	 jmp atoi_start
 done:
@@ -152,20 +156,20 @@ mov edx, offset msg2
 call WriteString
 xor edx, edx
 
-mov edx, offset arrayRS
+mov ebx, offset arrayRS
    
    l2:
-   mov ebx, DWORD PTR [edx]
-   mov DWORD PTR [number], ebx 
+   mov edx, DWORD PTR [ebx]
+   mov DWORD PTR [number], edx
    push offset number
    call itoa
 
    invoke GetStdHandle,STD_OUTPUT_HANDLE
    mov stdHandle,eax
-   invoke WriteConsole,stdHandle, ecx, 32, ADDR byteHandle, 0
+   invoke WriteConsole,stdHandle, ecx, 8, ADDR byteHandle, 0
 
-   add edx, 32
-   cmp DWORD ptr [edx], 0h
+   add ebx, 8
+   cmp DWORD ptr [ebx], 0h
    jne l2
 
 
