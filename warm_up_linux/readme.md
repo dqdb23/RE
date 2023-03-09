@@ -44,9 +44,10 @@ ord = [ 0x17,0x0E,0x02,0x15,0x0B,0x03,0x04,0x10,0x16,0x05,0x12,0x06,0x0C,0x07,0x
 enc2 =[0]*25
 for i in range(len(enc)):
     enc2[ord[i]]=enc[i]^key[math.floor(i/5)]
-    print(chr(enc2[ord[i]]),end="")
+for j in range (25):
+    print(chr(enc2[j]),end="")    
 ```
 
 # Flag
- `!gsbnct0!r_agijcn0ni{}kd0`
+ `0csctrainning{gd0k_j0b!!}`
 
