@@ -12,7 +12,7 @@ Load file vào ida để xem code
 
 ![image](https://user-images.githubusercontent.com/87138860/224772851-8722c4ff-b595-4062-a06a-6589291c3313.png)
 
-Ta có thể thấy chương trình là một socket client. Nó sử dụng Winsock Api để thiết lập kết nối đến địa chỉ ip `127.0.0.1` và một cổng cụ thể nào đó và gửi dữ liệu qua kết nối
+Ta có thể thấy chương trình là một socket client. Nó sử dụng Winsock Api để thiết lập kết nối đến địa chỉ ip `127.0.0.1` và một cổng cụ thể nào đó và gửi dữ liệu qua kết nối.
 Ta cần nhập `input` có độ dài < 50 cho server để check.
 Việc ta cần làm bây giờ là tìm server để xem hàm check.
 
