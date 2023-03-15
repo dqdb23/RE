@@ -18,13 +18,13 @@ Việc ta cần làm bây giờ là tìm server để xem hàm check.
 
 ![image](https://user-images.githubusercontent.com/87138860/224776155-37bee232-8329-41db-83f4-cb79b42bd1c9.png)
 
-tại hàm `sub_901000` chương trình tìm kiếm tài nguyên có tên `BINARY` trong tệp đang thực thi bằng hàm `FindResourceA()`, sau đó sử dụng hàm `LoadResource()` để tải tài nguyên đó lên hệ thống. Sau đó, hàm `LockResource()` được sử dụng để khóa tài nguyên trong bộ nhớ để chúng ta có thể truy cập nó.
-Sau đó, chương trình tính toán kích thước của tài nguyên sử dụng hàm `SizeofResource()` và cấp phát bộ nhớ động đủ lớn để lưu trữ tài nguyên. Tài nguyên được sao chép từ vùng nhớ đã khóa bằng hàm `memmove()` và được giải mã bằng cách thực hiện `XOR` với chỉ số của từng byte.
+tại hàm `sub_901000` chương trình tìm kiếm tài nguyên có tên `BINARY` trong tệp đang thực thi bằng hàm `FindResourceA()`, sau đó sử dụng hàm `LoadResource()` để tải tài nguyên đó lên hệ thống. Hàm `LockResource()` được sử dụng để khóa tài nguyên trong bộ nhớ để chúng ta có thể truy cập nó.
+Kế tiếp, chương trình tính toán kích thước của tài nguyên sử dụng hàm `SizeofResource()` và cấp phát bộ nhớ động đủ lớn để lưu trữ tài nguyên. Tài nguyên được sao chép từ vùng nhớ đã khóa bằng hàm `memmove()` và được giải mã bằng cách thực hiện `XOR` với chỉ số của từng byte.
 Tiếp theo, chương trình tạo một tệp tạm thời bằng cách sử dụng hàm `GetTempPathA()` và `GetTempFileNameA()`, sau đó mở tệp đó và ghi nội dung của tài nguyên đã được giải mã vào tệp đó bằng hàm `WriteFile()`. Cuối cùng, tệp tạm thời được đóng bằng hàm `CloseHandle()`.
 
 ![image](https://user-images.githubusercontent.com/87138860/224780819-05fcfb7f-b0f5-4ee6-8baf-a6382725270e.png)
 
-Debug ngay dưới vòng for ta sẽ có được giá trị của `v3`. Sau đó ta đưa dữ liệu thu được vào `HxD` và lưu ta sẽ được chương trình Server.
+Debug ngay dưới vòng for ta sẽ có được giá trị của `v3`. Ta đưa dữ liệu thu được vào `HxD` và lưu ta sẽ được chương trình Server.
 
 Tiếp tục load chương trình vừa thu được vào ida.
 
