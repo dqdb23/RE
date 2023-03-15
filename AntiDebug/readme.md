@@ -24,7 +24,7 @@ Ta thấy chương trình sử dụng hàng loạt hàm `GetTickCount()`. `GetTi
 Khi khởi động chương trình, hàm `sub_140001000()` sẽ chạy và khởi tạo giá trị cho biến `dword_140023BBC` bằng `GetTickCount()` => `GetTickCount() - dword_7FF733693BBC` bằng thời gian từ lúc khởi tạo giá trị `dword_140023BBC` cho đến thời điểm hiện tại.
 Nếu `> 10` giây thì chương trình sẽ trả về `-1`.
 
-Có thể hiểu là nếu ta debug tại một điểm nào đó quá `10s` thì chương trình sẽ bị dừng. Vậy nên ta sẽ sửa thử lên `70000s` :)). Bỏ qua những hàm check thời gian qua một bên, chương trình đọc dữ liệu từ `AntiDebug.exe` rồi lưu trữ vào `v6`.
+Có thể hiểu là nếu ta debug tại một điểm nào đó quá `10s` thì chương trình sẽ bị dừng. Vậy nên ta sẽ sửa thử lên `7000s` :)). Bỏ qua những hàm check thời gian qua một bên, chương trình đọc dữ liệu từ `AntiDebug.exe` rồi lưu trữ vào `v6`.
 
 ![image](https://user-images.githubusercontent.com/87138860/224991904-d815a4e1-78d8-4e52-821a-ad04a8c76e5c.png)
 
