@@ -21,4 +21,6 @@ nhưng có vẻ nó đã bị mã hóa hoặc gì đó. Và hàm  `sub_400526()`
 ![image](https://user-images.githubusercontent.com/87138860/226823311-b7c743d0-dbe9-46bd-acd3-19f364c9b899.png)
 
 
-ta sẽ dump hàm `loc_4006E5)()` bằng gdb : `dump
+ta sẽ dump hàm `loc_4006E5)()` bằng gdb : `dump binary memory result.bin 0x4006e5 0x40090d`
+
+
