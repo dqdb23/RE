@@ -24,3 +24,6 @@ nhưng có vẻ nó đã bị mã hóa hoặc gì đó. Và hàm  `sub_400526()`
 ta sẽ dump hàm `loc_4006E5)()` bằng gdb : `dump binary memory result.bin 0x4006e5 0x40090d`
 
 
+![image](https://user-images.githubusercontent.com/87138860/226839319-b30a2710-3507-4c76-a7e7-b9b8d18b9918.png)
+
+Đoạn mã trên sử dụng một số kĩ thuật disassembly. Thứ nhất, ta thấy code `mov` và `add` những số rất lớn vào `eax` rồi thực hiện `jnb`, nhưng đoạn code hoàn toàn vô nghĩa vì nó sẽ không đủ điều kiện để thay đổi giá trị cờ `CF`. Thứ hai, hàm `jnb` sẽ chỉ đến một địa điểm sai (rơi vào giữa câu lệnh tiếp theo).
